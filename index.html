@@ -1,0 +1,258 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Javeria × Zain | Forever</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#090608;color:#f6e9d9;font-family:'DM Sans',sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 40%,#4c182b55,transparent 65%);z-index:-1}
+#progress{height:3px;background:#d6b477;position:fixed;top:0;left:0;width:10%;z-index:20;transition:.5s}
+section{min-height:100vh;display:none;align-items:center;justify-content:center;text-align:center;flex-direction:column;padding:70px 22px;animation:show .7s}
+section.active{display:flex}
+@keyframes show{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.gold{color:#d6b477}
+.small{font-size:10px;letter-spacing:5px;color:#d6b477;text-transform:uppercase;margin-bottom:25px}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:400}
+h1{font-size:clamp(55px,12vw,100px);line-height:.95}
+h2{font-size:clamp(40px,9vw,68px);margin-bottom:20px}
+h3{font-size:30px}
+p{font-size:14px;line-height:2;color:#c7b8b2;max-width:490px;margin:12px auto}
+button{border:1px solid #d6b477;background:#d6b477;color:#160c10;padding:15px 26px;margin-top:25px;font-size:10px;letter-spacing:2px;cursor:pointer;transition:.3s}
+button:hover{background:transparent;color:#d6b477}
+.box{width:min(100%,470px);padding:32px 23px;background:linear-gradient(145deg,#28141d,#100b0e);border:1px solid #d6b47755;box-shadow:0 20px 80px #0008;margin:12px auto}
+.ornament{color:#d6b477;letter-spacing:10px;margin:20px}
+.big{font-size:85px;color:#d6b477;font-family:'Cormorant Garamond'}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:min(100%,470px)}
+.tile{padding:22px 9px;background:#21131a;border:1px solid #d6b47755;font-family:'Cormorant Garamond';font-size:20px;color:#e8c990}
+.photo{height:190px;background:#24131c;border:1px dashed #d6b47788;display:grid;place-items:center;color:#d6b477;margin:12px 0}
+.photo img{width:100%;height:100%;object-fit:cover}
+input{max-width:100%;color:#d6b477;margin:12px}
+.gifts{display:flex;justify-content:center;gap:13px;flex-wrap:wrap}
+.gift{font-size:55px;background:#24131c;border:1px solid #d6b477;padding:22px;cursor:pointer}
+#message{color:#e8c990;font-family:'Cormorant Garamond';font-size:24px;margin:20px}
+.letter{text-align:left;font-family:'Cormorant Garamond';font-size:21px;line-height:1.9;color:#ead9c9}
+.cake{font-size:100px;animation:bounce 1.2s infinite alternate}
+@keyframes bounce{to{transform:translateY(-12px)}}
+.heart{font-size:25px;color:#d76a83;animation:pulse 1s infinite alternate}
+@keyframes pulse{to{transform:scale(1.3)}}
+#music{position:fixed;right:12px;top:12px;z-index:30;margin:0;padding:10px}
+footer{margin-top:35px;font-size:9px;letter-spacing:3px;color:#8b747b}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<button id="music" onclick="toggleMusic()">♫ MUSIC</button>
+<audio id="song" loop>
+<source src="YOUR-MUSIC.mp3" type="audio/mpeg">
+</audio>
+
+<!-- STEP 1 -->
+<section class="active">
+<div class="small">A little world made for you</div>
+<div class="ornament">✦ ━━━━━ ✦</div>
+<h1>Happy<br><em class="gold">Birthday</em><br>Zain.</h1>
+<p>Today isn't just another day. Today is the celebration of someone truly special.</p>
+<div class="heart">♥</div>
+<button onclick="go(1)">OPEN YOUR SURPRISE →</button>
+<footer>WITH LOVE · JAVERIA</footer>
+</section>
+
+<!-- STEP 2 -->
+<section>
+<div class="small">01 · A special beginning</div>
+<div class="big">Dear Zain,</div>
+<h2>This is <em class="gold">your day.</em></h2>
+<div class="box"><p>I've created something special for you. Every page has a little piece of my heart, every word carries a feeling, and every surprise has one name behind it.</p><div class="ornament">✧ ✧ ✧</div><h3 class="gold">YOU DESERVE IT ALL.</h3></div>
+<button onclick="go(2)">LET'S BEGIN →</button>
+</section>
+
+<!-- STEP 3 -->
+<section>
+<div class="small">02 · Our little universe</div>
+<h2>Two years of <em class="gold">us.</em></h2>
+<div class="big">730+</div>
+<h3>Days of memories</h3>
+<p>Two years, countless conversations, little moments and memories that make our journey unique.</p>
+<div class="box"><div class="ornament">∞</div><h3>Our story is still being written.</h3></div>
+<button onclick="go(3)">NEXT CHAPTER →</button>
+</section>
+
+<!-- STEP 4 -->
+<section>
+<div class="small">03 · Our memories</div>
+<h2>Little moments,<br><em class="gold">big feelings.</em></h2>
+<p>Choose your favourite photos and make this page yours.</p>
+<div class="box">
+<div class="photo" id="photo1">OUR FIRST MEMORY</div>
+<input type="file" accept="image/*" onchange="addPhoto(event,'photo1')">
+<div class="photo" id="photo2">A BEAUTIFUL MOMENT</div>
+<input type="file" accept="image/*" onchange="addPhoto(event,'photo2')">
+<div class="photo" id="photo3">A MEMORY TO KEEP</div>
+<input type="file" accept="image/*" onchange="addPhoto(event,'photo3')">
+</div>
+<button onclick="go(4)">KEEP THESE MEMORIES →</button>
+</section>
+
+<!-- STEP 5 -->
+<section>
+<div class="small">04 · Ten little reasons</div>
+<h2>Why you're <em class="gold">special.</em></h2>
+<div class="grid">
+<div class="tile">01 · Your smile</div>
+<div class="tile">02 · Your heart</div>
+<div class="tile">03 · Your kindness</div>
+<div class="tile">04 · Your presence</div>
+<div class="tile">05 · Your humour</div>
+<div class="tile">06 · Your care</div>
+<div class="tile">07 · Your dreams</div>
+<div class="tile">08 · Your strength</div>
+<div class="tile">09 · Your uniqueness</div>
+<div class="tile">10 · Simply YOU</div>
+</div>
+<button onclick="go(5)">ONE MORE SURPRISE →</button>
+</section>
+
+<!-- STEP 6 -->
+<section>
+<div class="small">05 · A letter from my heart</div>
+<h2>Words I <em class="gold">feel.</em></h2>
+<div class="box letter">
+Dear Zain,<br><br>
+I may not always find the perfect words to explain what you mean to me, but I hope you always know how special you are.<br><br>
+Our two-year journey has given me memories that I will always treasure. Every little moment has its own place in my heart.<br><br>
+I wish you endless happiness, success, peace and all the beautiful things life can offer. May Allah protect you and make every dream of yours come true.<br><br>
+Keep smiling, keep growing and never stop believing in yourself.<br><br>
+Forever with warm wishes,<br>
+<strong class="gold">Javeria ❤️</strong>
+</div>
+<button onclick="go(6)">OPEN YOUR GIFTS →</button>
+</section>
+
+<!-- STEP 7 -->
+<section>
+<div class="small">06 · Mystery gifts</div>
+<h2>Pick your <em class="gold">surprise.</em></h2>
+<p>Three little gifts. Each one has a message for you.</p>
+<div class="gifts">
+<div class="gift" onclick="gift(0)">🎁</div>
+<div class="gift" onclick="gift(1)">🎀</div>
+<div class="gift" onclick="gift(2)">💝</div>
+</div>
+<div id="message">Choose one mystery gift...</div>
+<button onclick="go(7)">THE CELEBRATION →</button>
+</section>
+
+<!-- STEP 8 -->
+<section>
+<div class="small">07 · Make a wish</div>
+<h2>A cake just <em class="gold">for you.</em></h2>
+<div class="cake">🎂</div>
+<h3 class="gold">HAPPY BIRTHDAY ZAIN!</h3>
+<p>Close your eyes, make a beautiful wish and let this new year bring you happiness.</p>
+<button onclick="confetti()">MAKE A WISH ✨</button>
+<button class="outline" onclick="go(8)">CONTINUE →</button>
+</section>
+
+<!-- STEP 9 -->
+<section>
+<div class="small">08 · A wish for your future</div>
+<h2>Your next chapter<br><em class="gold">starts now.</em></h2>
+<div class="box">
+<div class="big">∞</div>
+<h3>Dream bigger.</h3>
+<p>May your hard work turn into success, your hopes into reality and your days into beautiful memories.</p>
+<div class="ornament">✦ ✦ ✦</div>
+<p>May Allah always keep you safe, happy and blessed. Ameen.</p>
+</div>
+<button onclick="go(9)">ONE LAST THING →</button>
+</section>
+
+<!-- STEP 10 -->
+<section>
+<div class="small">09 · The final surprise</div>
+<div class="heart">♥</div>
+<h1>To more<br><em class="gold">beautiful</em><br>chapters.</h1>
+<div class="ornament">✦ ━━━━━ ✦</div>
+<h2>Javeria <em class="gold">×</em> Zain</h2>
+<p>Two years behind us. So many memories with us. And a whole future of beautiful moments ahead.</p>
+<div class="box">
+<h3 class="gold">Happy Birthday, Zain!</h3>
+<p>You're celebrated today, tomorrow and in all the little moments in between.</p>
+<div class="heart">❤️</div>
+</div>
+<button onclick="restart()">REPLAY OUR STORY ↻</button>
+<footer>DESIGNED WITH LOVE · JAVERIA</footer>
+</section>
+
+<script>
+let current=0;
+const sections=document.querySelectorAll('section');
+
+function go(n){
+ sections[current].classList.remove('active');
+ current=n;
+ sections[current].classList.add('active');
+ document.getElementById('progress').style.width=((n+1)*10)+'%';
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function restart(){
+ sections[current].classList.remove('active');
+ current=0;
+ sections[0].classList.add('active');
+ document.getElementById('progress').style.width='10%';
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function gift(n){
+ const messages=[
+ "🎁 Your first gift: May all your biggest dreams come true!",
+ "🎀 Your second gift: Never forget how special and appreciated you are.",
+ "💝 Your third gift: A collection of beautiful wishes from Javeria, just for you."
+ ];
+ document.getElementById('message').textContent=messages[n];
+}
+
+function addPhoto(event,id){
+ const file=event.target.files[0];
+ if(!file)return;
+ const reader=new FileReader();
+ reader.onload=e=>{
+ document.getElementById(id).innerHTML='<img src="'+e.target.result+'" alt="Our memory">';
+ };
+ reader.readAsDataURL(file);
+}
+
+function toggleMusic(){
+ const audio=document.getElementById('song');
+ if(audio.paused)audio.play().catch(()=>alert('Please add your music file first.'));
+ else audio.pause();
+}
+
+function confetti(){
+ for(let i=0;i<90;i++){
+ let el=document.createElement('div');
+ el.textContent=['✨','💗','♥','✦','🎉'][Math.floor(Math.random()*5)];
+ el.style.position='fixed';
+ el.style.left=Math.random()*100+'vw';
+ el.style.top='-30px';
+ el.style.fontSize=(12+Math.random()*20)+'px';
+ el.style.zIndex='100';
+ el.style.pointerEvents='none';
+ document.body.appendChild(el);
+ let x=Math.random()*180-90;
+ el.animate([
+ {transform:'translateY(0) rotate(0deg)',opacity:1},
+ {transform:`translate(${x}px,110vh) rotate(600deg)`,opacity:0}
+ ],{duration:2000+Math.random()*2000,easing:'ease-out'});
+ setTimeout(()=>el.remove(),4200);
+ }
+}
+
+</script>
+</body>
+</html>
